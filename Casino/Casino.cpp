@@ -1,13 +1,9 @@
 ﻿#include <iostream>
-#include <cstdlib>
-
-
-using namespace std;
 
 int main()
 {
     int a;
-    setlocale(LC_ALL, "RU");
-    cout << "Интерфейс:";
+    std::cout << "[a] Интерфейс:";
     cin >> a;
+    std::cout << "Вывод: " << a << std::endl;
 }
