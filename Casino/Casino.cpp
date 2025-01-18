@@ -1,65 +1,46 @@
 ﻿#include <iostream>
 
-int main()
-{
-    //Задание №1
-    //Пользовательский интерфейс интерфейс
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-
-    void printInstructions() {
+void RandNumber() {
+        int number;
+        
         std::cout << "Добро пожаловать в игру 'Угадай число'!" << std::endl;
         std::cout << "Я загадал число от 1 до 100." << std::endl;
         std::cout << "Попробуйте угадать его!" << std::endl;
-    }
+        std::cout << "Введите предполагаемое число: ";
 
-    int main() {
-        std::srand(static_cast<unsigned int>(std::time(0))); // Инициализация генератора случайных чисел
-        int targetNumber = std::rand() % 100 + 1; // Случайное число от 1 до 100
-        int guess = 0;
-        int attempts = 0;
+        std::cin >> number;
+        if (TrueOrFalse_MinMaxNumber(number) == true) {
 
-        printInstructions();
-
-        while (true) {
-            std::cout << "Введите ваше предположение: ";
-            std::cin >> guess;
-
-            if (std::cin.fail()) { // Проверка на корректность ввода
-                std::cin.clear(); // Сброс состояния потока
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Игнорирование некорректного ввода
-                std::cout << "Пожалуйста, введите корректное число!" << std::endl;
-                continue;
-            }
-
-            attempts++;
-
-            if (guess < 1 || guess > 100) {
-                std::cout << "Число должно быть в диапазоне от 1 до 100." << std::endl;
-            }
-            else if (guess < targetNumber) {
-                std::cout << "Слишком низко! Попробуйте снова." << std::endl;
-            }
-            else if (guess > targetNumber) {
-                std::cout << "Слишком высоко! Попробуйте снова." << std::endl;
-            }
-            else {
-                std::cout << "Поздравляем! Вы угадали число " << targetNumber
-                    << " за " << attempts << " попыток!" << std::endl;
-                break; // Завершение игры
-            }
         }
+}
 
-        return 0;
+int TrueOrFalse_MinMaxNumber(int num, int min = 1, int max = 100) {
+    if (num < min || num > max) {
+        std::cout << "Число не может быть меньше 1 и больше 100!";
+        return main();
+    }
+    else {
+        return true;
     }
 
-    
-    //Задание №2
-    //Пользовательский интерфейс интерфейс
+}
+
+int main() {
+    int DO;
+    std::cout << "Вас приветствует казино \'KazahZik\'" << std::endl;
+    std::cout << "[1] Угадай число" << std::endl
+        << "[2] None" << std::endl;
+    syd::cout << "Введи номер игры в которую хотите сыграть:";
+
+    if (DO < 1 || DO > 1) {
+        std::cout << "Неверное значение!";
+        return main();
+    }
+
+    if (DO == 1) {
+        RandNumber()
+    }
     
 
-
-    //Задание №3
-    //Пользовательский интерфейс интерфейс
+   
 }
