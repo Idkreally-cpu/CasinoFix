@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <random>
+
 
 
 int TrueOrFalse_MinMaxNumber(int num, int min = 1, int max = 100) {
@@ -20,10 +22,16 @@ void RandNumber() {
         std::cout << "Попробуйте угадать его!" << std::endl;
         std::cout << "Введите предполагаемое число: ";
 
+        int randomNumber = distrib(gen);
+
+        std::random_device rd;  // Получаем случайное значение из аппаратного источника
+        std::mt19937 gen(rd());  // Инициализируем генератор Мерсенна
+        std::uniform_int_distribution<> distrib(1, 100); // Определяем диапазон от 1 до 100
+
         std::cin >> number;
         if (TrueOrFalse_MinMaxNumber(number) == true) {
-            if (number == rand() % 100) { std::cout << "Поздравляем вас! Вы смотгли угадать число!"; }
-            else { std::cout << "Повезёт в следующий раз"; }
+            if (number == randomNumber) { std::cout << "Поздравляем вас! Вы смотгли угадать число!"; }
+            else { std::cout << "Повезёт в следующий раз" << "Случайное число от 1 до 100: " << randomNumber << std::endl; }
         }
 }
 
