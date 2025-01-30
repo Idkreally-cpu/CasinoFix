@@ -1,59 +1,52 @@
 ﻿#include <iostream>
 #include <random>
 
-
-
-int TrueOrFalse_MinMaxNumber(int num, int min = 1, int max = 100) {
-    if (num < min || num > max) {
-        std::cout << "Число не может быть меньше 1 и больше 100!";
-        return main();
-    }
-    else {
-        return true;
-    }
-
-}
+int main();
 
 void RandNumber() {
-        int number;
-        
-        std::cout << "Добро пожаловать в игру 'Угадай число'!" << std::endl;
-        std::cout << "Я загадал число от 1 до 100." << std::endl;
-        std::cout << "Попробуйте угадать его!" << std::endl;
-        std::cout << "Введите предполагаемое число: ";
+    int number;
 
-        int randomNumber = distrib(gen);
+    std::cout << "Добро пожаловать в игру 'Угадай число'!" << std::endl;
+    std::cout << "Я загадал число от 1 до 100." << std::endl;
+    std::cout << "Попробуйте угадать его!" << std::endl;
+    std::cout << "Введите предполагаемое число: ";
 
-        std::random_device rd;  // Получаем случайное значение из аппаратного источника
-        std::mt19937 gen(rd());  // Инициализируем генератор Мерсенна
-        std::uniform_int_distribution<> distrib(1, 100); // Определяем диапазон от 1 до 100
+    std::random_device rd;  // Получаем случайное значение из аппаратного источника
+    std::mt19937 gen(rd());  // Инициализируем генератор Мерсенна
+    std::uniform_int_distribution<> distrib(1, 100); // Определяем диапазон от 1 до 100
 
-        std::cin >> number;
-        if (TrueOrFalse_MinMaxNumber(number) == true) {
-            if (number == randomNumber) { std::cout << "Поздравляем вас! Вы смотгли угадать число!"; }
-            else { std::cout << "Повезёт в следующий раз" << "Случайное число от 1 до 100: " << randomNumber << std::endl; }
-        }
+    int randomNumber = distrib(gen);
+
+
+    std::cin >> number;
+    if (number < 0 || number > 100) { std::cout << "Неверное значение, число должно быть от 1 до 100"; main(); }
+    else {
+        if (number == randomNumber) { std::cout << "Поздравляем вас! Вы смотгли угадать число!"; }
+        else { system("cls"); std::cout << "Повезёт в следующий раз\n" << "Случайное число от 1 до 100: " << randomNumber << std::endl; }
+    }
 }
 
 
 int main() {
-    int DO;
+    int Game;
     std::cout << "Вас приветствует казино \'KazahZik\'" << std::endl;
     std::cout << "[1] Угадай число" << std::endl
         << "[2] None" << std::endl;
-    syd::cout << "Введи номер игры в которую хотите сыграть:";
+    std::cout << "Введи номер игры в которую хотите сыграть:";
 
-    if (DO < 1 || DO > 1) {
+    std::cin >> Game;
+
+    if (Game < 1 || Game > 1) {
         std::cout << "Неверное значение!";
         return main();
     }
 
     system("cls");
 
-    if (DO == 1) {
-        RandNumber()
+    switch (Game)
+    {
+    case 1:
+        RandNumber();
+        break;
     }
-    
-
-   
 }
