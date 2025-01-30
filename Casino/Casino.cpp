@@ -1,18 +1,5 @@
 ﻿#include <iostream>
 
-void RandNumber() {
-        int number;
-        
-        std::cout << "Добро пожаловать в игру 'Угадай число'!" << std::endl;
-        std::cout << "Я загадал число от 1 до 100." << std::endl;
-        std::cout << "Попробуйте угадать его!" << std::endl;
-        std::cout << "Введите предполагаемое число: ";
-
-        std::cin >> number;
-        if (TrueOrFalse_MinMaxNumber(number) == true) {
-
-        }
-}
 
 int TrueOrFalse_MinMaxNumber(int num, int min = 1, int max = 100) {
     if (num < min || num > max) {
@@ -25,6 +12,22 @@ int TrueOrFalse_MinMaxNumber(int num, int min = 1, int max = 100) {
 
 }
 
+void RandNumber() {
+        int number;
+        
+        std::cout << "Добро пожаловать в игру 'Угадай число'!" << std::endl;
+        std::cout << "Я загадал число от 1 до 100." << std::endl;
+        std::cout << "Попробуйте угадать его!" << std::endl;
+        std::cout << "Введите предполагаемое число: ";
+
+        std::cin >> number;
+        if (TrueOrFalse_MinMaxNumber(number) == true) {
+            if (number == rand() % 100) { std::cout << "Поздравляем вас! Вы смотгли угадать число!"; }
+            else { std::cout << "Повезёт в следующий раз"; }
+        }
+}
+
+
 int main() {
     int DO;
     std::cout << "Вас приветствует казино \'KazahZik\'" << std::endl;
@@ -36,6 +39,8 @@ int main() {
         std::cout << "Неверное значение!";
         return main();
     }
+
+    system("cls");
 
     if (DO == 1) {
         RandNumber()
